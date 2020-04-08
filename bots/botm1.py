@@ -80,6 +80,7 @@ while not stop:
 
 memberDict = dict({"members":emailList})
 output = client.chat_channels.inviteChannelMembers(channel_id=cid,members=memberDict)
+print(output)
 print ('--------------------------------------------------------------------------------------')
 
 #List channel members
