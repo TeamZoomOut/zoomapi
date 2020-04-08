@@ -33,7 +33,7 @@ class ChatChannelsComponentV2(base.BaseComponent):
     def update(self,**kwargs):
         require_keys(kwargs,["channel_id","name"])
         return self.patch_request(
-            "/chat/channels/{}".format(kwargs.get("channel_id")),data=kwargs.get("name")
+            "/chat/channels/{}".format(kwargs.get("channel_id")),data=kwargs
         )
 
     #Delete a Channel

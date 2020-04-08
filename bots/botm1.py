@@ -39,8 +39,7 @@ print ('------------------------------------------------------------------------
 #create channel
 print("Create new channel")
 name = input("Enter channel name: ")
-print("Type of channel\n1. Private Channel - members must be invited to join a channel\n2. Private channel - members must be invited and should be of the same organization\n3. Public channel")
-channelType = input("Enter type of channel: ")
+channelType = 1
 emailList = []
 stop = False
 i=0
@@ -94,7 +93,8 @@ print ('------------------------------------------------------------------------
 print("Updating channel name of the channel ",cid)
 name = input("Enter new name: ")
 nameDict = dict({"name":name})
-output = client.chat_channels.update(channel_id=cid,name=nameDict)
+output = client.chat_channels.update(channel_id=cid,name=name)
+print(output)
 print ('--------------------------------------------------------------------------------------')
 
 #get channel details
@@ -121,6 +121,7 @@ print ('------------------------------------------------------------------------
 #update a chat message
 message = input("Enter updated message for the above message: ")
 output = client.chat_messages.update(messageID=mId,to_channel=cid, message=message)
+print(output)
 print("Message updated in Channel ",cid)
 print ('--------------------------------------------------------------------------------------')
 time.sleep(3)
@@ -129,6 +130,7 @@ time.sleep(3)
 print("Deleting the above message...")
 time.sleep(3)
 output = client.chat_messages.delete(messageID=mId,to_channel=cid)
+print(output)
 print("Message deleted in Channel ",cid)
 print ('--------------------------------------------------------------------------------------')
 time.sleep(3)
@@ -137,6 +139,7 @@ time.sleep(3)
 print("Remove a member from the Channel ",cid)
 emailId= input("Email to remove:")
 output = client.chat_channels.remove(member_id=emailId,channel_id=cid)
+print(output)
 print("Removed member")
 print ('--------------------------------------------------------------------------------------')
 time.sleep(3)
@@ -146,6 +149,7 @@ print("Channel id: ",cid)
 print("Leaving the channel...")
 time.sleep(3)
 output = client.chat_channels.leave(channel_id=cid)
+print(output)
 print("Left channel with id: ",cid)
 print ("The admin powers are given to the existing members!")
 print ('--------------------------------------------------------------------------------------')
@@ -156,6 +160,7 @@ print("Channel id: ",cid)
 print("Joining the channel...")
 time.sleep(3)
 output = client.chat_channels.joinChannel(channel_id=cid)
+print(output)
 print("Joined channel with id: ",cid)
 print ('--------------------------------------------------------------------------------------')
 time.sleep(3)
@@ -164,8 +169,7 @@ time.sleep(3)
 print ("You are not the admin anymore for the above channel.")
 print("Let's create new channel to test deleting!")
 name = input("Enter channel name: ")
-print("Type of channel\n1. Private Channel - members must be invited to join a channel\n2. Private channel - members must be invited and should be of the same organization\n3. Public channel")
-channelType = input("Enter type of channel: ")
+channelType = 1
 emailList = []
 stop = False
 i=0
@@ -194,5 +198,6 @@ print("Channel id: ",cid)
 print("Deleting the channel...")
 time.sleep(2)
 output = client.chat_channels.delete(channel_id=cid)
+print(output)
 print("Deleted channel with id: ",cid)
 time.sleep(3)
